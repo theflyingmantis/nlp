@@ -111,23 +111,23 @@ def main():
 
   # print devCorpus
 
-  print 'Uniform Language Model: '
-  uniformLM = UniformLanguageModel(trainingCorpus)
-  uniformSpell = SpellCorrect(uniformLM, trainingCorpus)
-  uniformOutcome = uniformSpell.evaluate(devCorpus) 
-  print str(uniformOutcome)
+  # print 'Uniform Language Model: '
+  # uniformLM = UniformLanguageModel(trainingCorpus)
+  # uniformSpell = SpellCorrect(uniformLM, trainingCorpus)
+  # uniformOutcome = uniformSpell.evaluate(devCorpus) 
+  # print str(uniformOutcome)
 
-  print 'Laplace Unigram Language Model: ' 
-  laplaceUnigramLM = LaplaceUnigramLanguageModel(trainingCorpus)
-  laplaceUnigramSpell = SpellCorrect(laplaceUnigramLM, trainingCorpus)
-  laplaceUnigramOutcome = laplaceUnigramSpell.evaluate(devCorpus)
-  print str(laplaceUnigramOutcome)
+  # print 'Laplace Unigram Language Model: ' 
+  # laplaceUnigramLM = LaplaceUnigramLanguageModel(trainingCorpus)
+  # laplaceUnigramSpell = SpellCorrect(laplaceUnigramLM, trainingCorpus)
+  # laplaceUnigramOutcome = laplaceUnigramSpell.evaluate(devCorpus)
+  # print str(laplaceUnigramOutcome)
 
-  # print 'Laplace Bigram Language Model: '
-  # laplaceBigramLM = LaplaceBigramLanguageModel(trainingCorpus)
-  # laplaceBigramSpell = SpellCorrect(laplaceBigramLM, trainingCorpus)
-  # laplaceBigramOutcome = laplaceBigramSpell.evaluate(devCorpus)
-  # print str(laplaceBigramOutcome)
+  print 'Laplace Bigram Language Model: '
+  laplaceBigramLM = LaplaceBigramLanguageModel(trainingCorpus)
+  laplaceBigramSpell = SpellCorrect(laplaceBigramLM, trainingCorpus)
+  laplaceBigramOutcome = laplaceBigramSpell.evaluate(devCorpus)
+  print str(laplaceBigramOutcome)
 
   # print 'Stupid Backoff Language Model: '  
   # sbLM = StupidBackoffLanguageModel(trainingCorpus)
