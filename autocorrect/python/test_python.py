@@ -8,5 +8,10 @@ a = collections.defaultdict(lambda:0)
 
 from collections import defaultdict
 
-y = defaultdict(lambda: defaultdict(lambda: 0))
-print y["hello"]["world"]
+# y = defaultdict(lambda: defaultdict(lambda: 0))
+# print y["hello"]["world"]
+
+
+trigram = collections.defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: 0)))
+trigram ["A"]["S"]["d"] = 5
+print trigram ["A"]["S"]["d"]
