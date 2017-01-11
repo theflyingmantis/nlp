@@ -22,6 +22,8 @@ class EditModel:
     """Computes p(x|word) edit model for a given word. Returns a dictionary mapping x -> p(x|word)."""
     s = [(word[:i], word[i:]) for i in range(len(word) + 1)]
     counts = collections.defaultdict(lambda: 0)
+    #print s
+    #[('', 'have'), ('h', 'ave'), ('ha', 've'), ('hav', 'e'), ('have', '')]
     # deletes
     for a, b in s:
       if b and a + b[1:] in self.vocabulary:
@@ -67,7 +69,9 @@ class EditModel:
           count = self.edit_count(original, replacement)
           if count:
             counts[a + c + b] += count
-  
+    #print counts
+    # defaultdict(<function <lambda> at 0x7f885ac9dcf8>, {'save': 6, 'hav': 34})
+
     # normalize counts. sum over them all, divide each entry by sum.
     total = 0.0
     for a,b in counts.iteritems():
@@ -80,6 +84,8 @@ class EditModel:
     if(total != 0.0): 
       for a,b in counts.iteritems():
         probs[a] = float(b)/total
+    #print probs
+    #{'save': 0.015, 'hav': 0.085, 'have': 0.9}
     return probs
         
   def read_edit_table(self, file_name):
@@ -90,18 +96,20 @@ class EditModel:
     for line in f:
       contents = line.split('\t')
       edit_table[contents[0]] = int(contents[1])
+    #print edit_table
     return edit_table
   
   
   def edit_count(self, s1, s2):
-    """Returns how many times substring s1 is edited as s2."""  
+    """Returns how many times substring s1 is edited as s2. returns the count like 52, 54, 1, etc as in edit table"""  
     return self.edit_table[s1 + "|" + s2]
   
 
 # taken from http://mwh.geek.nz/2009/04/26/python-damerau-levenshtein-distance/
 # MIT license.
 def dameraulevenshtein(seq1, seq2):
-    """Calculate the Damerau-Levenshtein distance between sequences.
+    """Calculate the Damerau-Levenshtein distance between sequences. This doesn't make use of confusion matrix as 
+    in edit_distance data.
 
     This distance is the number of additions, deletions, substitutions,
     and transpositions needed to transform the first sequence into the

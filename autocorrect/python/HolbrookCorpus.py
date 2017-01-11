@@ -67,6 +67,7 @@ class HolbrookCorpus:
       cleanSentence = sentence.cleanSentence()
       for i in range(0, len(sentence)):
         datum_i = sentence.get(i)
+        #print datum_i
         if datum_i.hasError() and datum_i.isValidTest():
           testSentence = Sentence(cleanSentence)
           testSentence.put(i, datum_i)

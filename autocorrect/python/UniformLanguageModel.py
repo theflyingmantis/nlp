@@ -13,7 +13,8 @@ class UniformLanguageModel:
     """  
     for sentence in corpus.corpus: # iterate over sentences in the corpus
       for datum in sentence.data: # iterate over datums in the sentence
-        word = datum.word # get the word
+        #print datum.word
+        word = datum.word # get the words. datum.word contains only correct words!
         self.words.add(word)
 
   def score(self, sentence):

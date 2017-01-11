@@ -15,6 +15,7 @@ class Sentence:
         errorSentence.append(datum.error)
       else:
         errorSentence.append(datum.word)
+    #print errorSentence
     return errorSentence
 
   def getCorrectSentence(self):
@@ -68,7 +69,7 @@ class Sentence:
   def __len__(self):
     return len(self.data)
 
-  def __str__(self):
+  def __str__(self):  #useful for print!
     str_list = []
     for datum in self.data:
       str_list.append(str(datum))

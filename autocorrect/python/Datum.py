@@ -29,7 +29,7 @@ class Datum:
     distance = dameraulevenshtein(self.word, self.error) 
     if(distance > 1):
       return False
-    regex = '.*[^a-zA-Z].*'
+    regex = '.*[^a-zA-Z].*'   #checks for space. If there is space either in word or error.
     if re.match(regex, self.word) or re.match(regex, self.error):
       return False
     return True
